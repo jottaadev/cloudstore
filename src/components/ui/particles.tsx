@@ -89,6 +89,49 @@ export const Particles: React.FC<ParticlesProps> = ({
         }
     }, [dpr]);
 
+    const circleParams = useCallback((): Circle => {
+        const x = Math.floor(Math.random() * canvasSize.current.w);
+        const y = Math.floor(Math.random() * canvasSize.current.h);
+        const translateX = 0;
+        const translateY = 0;
+        const pSize = Math.floor(Math.random() * 2) + size;
+        const alpha = 0;
+        const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+        const dx = (Math.random() - 0.5) * 0.1;
+        const dy = (Math.random() - 0.5) * 0.1;
+        const magnetism = 0.1 + Math.random() * 4;
+        return {
+            x,
+            y,
+            translateX,
+            translateY,
+            size: pSize,
+            alpha,
+            targetAlpha,
+            dx,
+            dy,
+            magnetism,
+        };
+    }, [size]);
+
+    const rgb = hexToRgb(color);
+
+    const drawCircle = useCallback((circle: Circle, update = false) => {
+        if (context.current) {
+            const { x, y, translateX, translateY, size, alpha } = circle;
+            context.current.translate(translateX, translateY);
+            context.current.beginPath();
+            context.current.arc(x, y, size, 0, 2 * Math.PI);
+            context.current.fillStyle = `rgba(${rgb.join(", ")}, ${alpha})`;
+            context.current.fill();
+            context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            if (!update) {
+                circles.current.push(circle);
+            }
+        }
+    }, [rgb, dpr]);
+
     const drawParticles = useCallback(() => {
         clearContext();
         const particleCount = quantity;
@@ -201,50 +244,6 @@ export const Particles: React.FC<ParticlesProps> = ({
         dy: number;
         magnetism: number;
     };
-
-
-    const circleParams = useCallback((): Circle => {
-        const x = Math.floor(Math.random() * canvasSize.current.w);
-        const y = Math.floor(Math.random() * canvasSize.current.h);
-        const translateX = 0;
-        const translateY = 0;
-        const pSize = Math.floor(Math.random() * 2) + size;
-        const alpha = 0;
-        const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
-        const dx = (Math.random() - 0.5) * 0.1;
-        const dy = (Math.random() - 0.5) * 0.1;
-        const magnetism = 0.1 + Math.random() * 4;
-        return {
-            x,
-            y,
-            translateX,
-            translateY,
-            size: pSize,
-            alpha,
-            targetAlpha,
-            dx,
-            dy,
-            magnetism,
-        };
-    }, [size]);
-
-    const rgb = hexToRgb(color);
-
-    const drawCircle = useCallback((circle: Circle, update = false) => {
-        if (context.current) {
-            const { x, y, translateX, translateY, size, alpha } = circle;
-            context.current.translate(translateX, translateY);
-            context.current.beginPath();
-            context.current.arc(x, y, size, 0, 2 * Math.PI);
-            context.current.fillStyle = `rgba(${rgb.join(", ")}, ${alpha})`;
-            context.current.fill();
-            context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-            if (!update) {
-                circles.current.push(circle);
-            }
-        }
-    }, [rgb, dpr]);
 
     const clearContext = () => {
         if (context.current) {
