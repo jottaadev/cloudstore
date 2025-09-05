@@ -2,7 +2,7 @@
 
 import { cn } from "@/functions";
 import { useClickOutside } from "@/hooks";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Home, CreditCard, MessageCircle, HelpCircle } from "lucide-react";
 import Link from "next/link";
 import React from 'react';
@@ -15,7 +15,7 @@ interface Props {
 const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
     const ref = useClickOutside(() => setIsOpen(false));
 
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: { opacity: 0, y: -20 },
         visible: { 
             opacity: 1, 
@@ -36,7 +36,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
         }
     };
 
-    const itemVariants = {
+    const itemVariants: Variants = {
         hidden: { opacity: 0, x: -20 },
         visible: { opacity: 1, x: 0 },
         exit: { opacity: 0, x: -20 }
