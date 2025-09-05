@@ -18,14 +18,6 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
     const [active, setActive] = useState<number>(0)
     const [progress, setProgress] = useState<number>(0)
 
-    useEffect(() => {
-        firstFrameTime.current = performance.now()
-        frame.current = requestAnimationFrame(animate)
-        return () => {
-            cancelAnimationFrame(frame.current)
-        }
-    }, [active, animate])
-
     const animate = useCallback((now: number) => {
         let timeFraction = (now - firstFrameTime.current) / duration
         if (timeFraction <= 1) {
@@ -37,6 +29,14 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
             setActive((active + 1) % items.length)
         }
     }, [active, duration, items.length])
+
+    useEffect(() => {
+        firstFrameTime.current = performance.now()
+        frame.current = requestAnimationFrame(animate)
+        return () => {
+            cancelAnimationFrame(frame.current)
+        }
+    }, [active, animate])
 
     const heightFix = () => {
         if (itemsRef.current && itemsRef.current.parentElement) itemsRef.current.parentElement.style.height = `${itemsRef.current.clientHeight}px`

@@ -96,7 +96,7 @@ export const Particles: React.FC<ParticlesProps> = ({
             const circle = circleParams();
             drawCircle(circle);
         }
-    }, [quantity, color]);
+    }, [quantity, circleParams, drawCircle]);
 
     const initCanvas = useCallback(() => {
         resizeCanvas();
@@ -166,7 +166,7 @@ export const Particles: React.FC<ParticlesProps> = ({
             }
         });
         window.requestAnimationFrame(animate);
-    }, [vx, vy, staticity, ease, color]);
+    }, [vx, vy, staticity, ease, circleParams, drawCircle]);
 
     useEffect(() => {
         if (canvasRef.current) {
@@ -203,7 +203,7 @@ export const Particles: React.FC<ParticlesProps> = ({
     };
 
 
-    const circleParams = (): Circle => {
+    const circleParams = useCallback((): Circle => {
         const x = Math.floor(Math.random() * canvasSize.current.w);
         const y = Math.floor(Math.random() * canvasSize.current.h);
         const translateX = 0;
@@ -226,11 +226,11 @@ export const Particles: React.FC<ParticlesProps> = ({
             dy,
             magnetism,
         };
-    };
+    }, [size]);
 
     const rgb = hexToRgb(color);
 
-    const drawCircle = (circle: Circle, update = false) => {
+    const drawCircle = useCallback((circle: Circle, update = false) => {
         if (context.current) {
             const { x, y, translateX, translateY, size, alpha } = circle;
             context.current.translate(translateX, translateY);
@@ -244,7 +244,7 @@ export const Particles: React.FC<ParticlesProps> = ({
                 circles.current.push(circle);
             }
         }
-    };
+    }, [rgb, dpr]);
 
     const clearContext = () => {
         if (context.current) {
