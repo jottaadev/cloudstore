@@ -32,7 +32,7 @@ const Hero = () => {
             </Container>
             <BlurText
                 word="O futuro da sua experiência na nuvem começa agora."
-                className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent py-2 md:py-0 lg:!leading-snug font-medium tracking-[-0.0125em] mt-6 font-heading"
+                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent py-2 md:py-0 lg:!leading-snug font-medium tracking-[-0.0125em] mt-6 font-heading"
             />
             <Container delay={0.1}>
                 <p className="text-sm sm:text-base lg:text-lg mt-4 sm:mt-6 text-accent-foreground/60 max-w-2xl mx-auto px-4">
