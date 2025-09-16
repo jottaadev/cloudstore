@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/functions";
 
 interface SpaceParticlesProps {
@@ -8,17 +8,20 @@ interface SpaceParticlesProps {
   particleCount?: number;
   speed?: number;
   color?: string;
+  maxFps?: number;
 }
 
 export const SpaceParticles: React.FC<SpaceParticlesProps> = ({
   className,
   particleCount = 300,
   speed = 0.3,
-  color = "#ffffff"
+  color = "#ffffff",
+  maxFps = 45,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const lastTimeRef = useRef<number>(0);
+  const lastDrawRef = useRef<number>(0);
   const particlesRef = useRef<Array<{
     x: number;
     y: number;
@@ -28,6 +31,15 @@ export const SpaceParticles: React.FC<SpaceParticlesProps> = ({
     opacity: number;
     twinkleSpeed: number;
   }>>([]);
+
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  const effectiveParticleCount = useMemo(() => {
+    if (isReducedMotion) return 0;
+    const isSmallScreen = typeof window !== "undefined" && window.innerWidth < 768;
+    const base = Math.min(particleCount, 240);
+    return Math.max(0, Math.floor(base * (isSmallScreen ? 0.4 : 0.7)));
+  }, [particleCount, isReducedMotion]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -45,6 +57,8 @@ export const SpaceParticles: React.FC<SpaceParticlesProps> = ({
       canvas.height = rect.height * dpr;
       canvas.style.width = rect.width + 'px';
       canvas.style.height = rect.height + 'px';
+      // Reset and apply scale to avoid compounded scaling on resize
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
     };
 
@@ -67,13 +81,23 @@ export const SpaceParticles: React.FC<SpaceParticlesProps> = ({
       const deltaTime = currentTime - lastTimeRef.current;
       lastTimeRef.current = currentTime;
 
+      // Cap FPS to reduce CPU usage
+      const minFrameTime = 1000 / Math.max(1, maxFps);
+      if (currentTime - lastDrawRef.current < minFrameTime) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastDrawRef.current = currentTime;
+
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
 
       particlesRef.current.forEach((particle) => {
         // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+        // Integrate with deltaTime so motion is smooth even with capped FPS
+        const dt = Math.max(0.016, deltaTime / 1000);
+        particle.x += particle.vx * (dt * 60);
+        particle.y += particle.vy * (dt * 60);
 
         // Wrap around screen
         if (particle.x < 0) particle.x = canvas.width / dpr;
@@ -108,7 +132,17 @@ export const SpaceParticles: React.FC<SpaceParticlesProps> = ({
     resizeCanvas();
     createParticles();
     lastTimeRef.current = performance.now();
-    animationRef.current = requestAnimationFrame(animate);
+    lastDrawRef.current = 0;
+    if (effectiveParticleCount > 0) {
+      animationRef.current = requestAnimationFrame(animate);
+    } else {
+      // Reduced motion: render a light, static starfield once
+      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+      particlesRef.current.forEach((p) => {
+        ctx.fillStyle = `${color}66`;
+        ctx.fillRect(Math.floor(p.x), Math.floor(p.y), 1, 1);
+      });
+    }
 
     const handleResize = () => {
       resizeCanvas();
@@ -123,7 +157,17 @@ export const SpaceParticles: React.FC<SpaceParticlesProps> = ({
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [particleCount, speed, color]);
+  }, [effectiveParticleCount, speed, color, maxFps]);
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setIsReducedMotion(media.matches);
+    const onChange = () => setIsReducedMotion(media.matches);
+    media.addEventListener ? media.addEventListener('change', onChange) : media.addListener(onChange as any);
+    return () => {
+      media.removeEventListener ? media.removeEventListener('change', onChange) : media.removeListener(onChange as any);
+    };
+  }, []);
 
   return (
     <canvas

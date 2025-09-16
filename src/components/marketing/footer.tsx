@@ -5,8 +5,6 @@ import Icons from "../global/icons";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
 import { Particles } from "../ui/particles";
-import Image from "next/image";
-import { ArrowRightIcon } from "lucide-react";
 
 const Footer = () => {
     return (
@@ -22,25 +20,17 @@ const Footer = () => {
                     />
                     <div className="flex flex-col items-start max-w-48">
                         <div className="flex items-center gap-2">
-                            <Image
-                                src="/images/DARK_CLOUD.png"
-                                alt="Dark Cloud Store"
-                                width={120}
-                                height={40}
-                                className="h-8 w-auto"
-                                priority
-                            />
+                            <Icons.icon className="w-5 h-5" />
                             <span className="text-xl font-medium">
-                                Dark Cloud Store
+                                Luro
                             </span>
                         </div>
                         <p className="text-base max-w mt-4">
-                            Máquinas virtuais gaming de alta performance. Latência zero, potência ilimitada na nuvem.
+                            Capacite seus negócios com nossas ferramentas de IA.
                         </p>
                         <Button className="mt-8">
-                            <Link href="/app" className="flex items-center">
-                                <span>Começar agora</span>
-                                <ArrowRightIcon className="w-4 h-4 ml-2" />
+                            <Link href="/app">
+                                Comece de graça
                             </Link>
                         </Button>
                     </div>
@@ -67,7 +57,7 @@ const Footer = () => {
             <Container>
                 <Wrapper className="pt-10 flex items-center justify-between relative">
                     <p className="text-sm text-secondary-foreground">
-                        &copy; {new Date().getFullYear()} Dark Cloud Store. Todos os direitos reservados.
+                        &copy; {new Date().getFullYear()} Luro. Todos os direitos reservados.
                     </p>
                     <div className="flex items-center gap-4">
                         <Link href="#" className="p-1">

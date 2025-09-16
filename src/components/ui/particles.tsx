@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 interface MousePosition {
     x: number;
@@ -8,20 +8,25 @@ interface MousePosition {
 }
 
 function MousePosition(): MousePosition {
-    const [mousePosition, setMousePosition] = useState<MousePosition>({
-        x: 0,
-        y: 0,
-    });
+    // Avoid triggering React re-renders on every mousemove; store in ref and mirror via state at low frequency if needed
+    const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
+    const rafId = useRef<number | null>(null);
+    const latest = useRef<MousePosition>({ x: 0, y: 0 });
 
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
-            setMousePosition({ x: event.clientX, y: event.clientY });
+            latest.current = { x: event.clientX, y: event.clientY };
+            if (rafId.current == null) {
+                rafId.current = requestAnimationFrame(() => {
+                    setMousePosition(latest.current);
+                    rafId.current = null;
+                });
+            }
         };
-
-        window.addEventListener("mousemove", handleMouseMove);
-
+        window.addEventListener("mousemove", handleMouseMove, { passive: true } as any);
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener("mousemove", handleMouseMove as any);
+            if (rafId.current) cancelAnimationFrame(rafId.current);
         };
     }, []);
 
@@ -74,7 +79,24 @@ export const Particles: React.FC<ParticlesProps> = ({
     const mousePosition = MousePosition();
     const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
     const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
-    const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+    const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio || 1, 2) : 1;
+
+    const [isReducedMotion, setIsReducedMotion] = useState(false);
+    useEffect(() => {
+        const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setIsReducedMotion(media.matches);
+        const onChange = () => setIsReducedMotion(media.matches);
+        media.addEventListener ? media.addEventListener('change', onChange) : media.addListener(onChange as any);
+        return () => {
+            media.removeEventListener ? media.removeEventListener('change', onChange) : media.removeListener(onChange as any);
+        };
+    }, []);
+
+    const effectiveQuantity = useMemo(() => {
+        if (isReducedMotion) return 0;
+        const isSmall = typeof window !== 'undefined' && window.innerWidth < 768;
+        return Math.floor(quantity * (isSmall ? 0.4 : 0.7));
+    }, [quantity, isReducedMotion]);
 
     const resizeCanvas = useCallback(() => {
         if (canvasContainerRef.current && canvasRef.current && context.current) {
@@ -85,6 +107,7 @@ export const Particles: React.FC<ParticlesProps> = ({
             canvasRef.current.height = canvasSize.current.h * dpr;
             canvasRef.current.style.width = `${canvasSize.current.w}px`;
             canvasRef.current.style.height = `${canvasSize.current.h}px`;
+            context.current.setTransform(1, 0, 0, 1, 0, 0);
             context.current.scale(dpr, dpr);
         }
     }, [dpr]);
@@ -134,12 +157,12 @@ export const Particles: React.FC<ParticlesProps> = ({
 
     const drawParticles = useCallback(() => {
         clearContext();
-        const particleCount = quantity;
+        const particleCount = effectiveQuantity;
         for (let i = 0; i < particleCount; i++) {
             const circle = circleParams();
             drawCircle(circle);
         }
-    }, [quantity, circleParams, drawCircle]);
+    }, [effectiveQuantity, circleParams, drawCircle]);
 
     const initCanvas = useCallback(() => {
         resizeCanvas();
@@ -160,6 +183,7 @@ export const Particles: React.FC<ParticlesProps> = ({
         }
     }, [mousePosition.x, mousePosition.y]);
 
+    const rafId = useRef<number | null>(null);
     const animate = useCallback(() => {
         clearContext();
         circles.current.forEach((circle: Circle, i: number) => {
@@ -208,7 +232,7 @@ export const Particles: React.FC<ParticlesProps> = ({
                 // update the circle position
             }
         });
-        window.requestAnimationFrame(animate);
+        rafId.current = window.requestAnimationFrame(animate);
     }, [vx, vy, staticity, ease, circleParams, drawCircle]);
 
     useEffect(() => {
@@ -216,13 +240,14 @@ export const Particles: React.FC<ParticlesProps> = ({
             context.current = canvasRef.current.getContext("2d");
         }
         initCanvas();
-        animate();
+        if (effectiveQuantity > 0) animate();
         window.addEventListener("resize", initCanvas);
 
         return () => {
             window.removeEventListener("resize", initCanvas);
+            if (rafId.current) cancelAnimationFrame(rafId.current);
         };
-    }, [color, initCanvas, animate]);
+    }, [color, initCanvas, animate, effectiveQuantity]);
 
     useEffect(() => {
         onMouseMove();

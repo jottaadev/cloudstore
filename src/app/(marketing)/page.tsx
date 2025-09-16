@@ -5,12 +5,13 @@ import { SpaceParticles } from "@/components/ui/space-particles";
 const HomePage = () => {
     return (
         <main className="relative min-h-screen bg-background">
-            {/* Space Particles Background */}
+            {/* Space Particles Background (reduced for performance) */}
             <SpaceParticles 
                 className="absolute inset-0"
-                particleCount={400}
-                speed={0.2}
+                particleCount={220}
+                speed={0.18}
                 color="#ffffff"
+                maxFps={45}
             />
             
             <SpotlightNew 
