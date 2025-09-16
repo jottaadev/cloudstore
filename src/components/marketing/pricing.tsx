@@ -3,7 +3,7 @@
 import { PLANS } from "@/constants";
 import { cn } from "@/functions";
 import { AnimatePresence, motion } from "framer-motion";
-import { CheckIcon, ShoppingBag } from "lucide-react";
+import { CheckIcon, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import Container from "../global/container";
 import { Button } from "../ui/button";
@@ -89,7 +89,7 @@ const PlanCard = ({
                             className="w-full hover:scale-100 hover:translate-y-0 shadow-none bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
                         >
                             <Link href={""}>
-                                <ShoppingBag className="w-4 h-4" />
+                                <ShoppingCart className="w-4 h-4" />
                                 {buttonText}
                             </Link>
                         </Button>

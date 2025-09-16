@@ -42,13 +42,13 @@ const Navbar = () => {
 
             <header
                 className={cn(
-                    "fixed top-2 sm:top-6 inset-x-0 mx-auto max-w-6xl px-2 sm:px-4 md:px-12 z-[100] transition-all duration-300 ease-in-out",
+                    "fixed top-2 sm:top-6 inset-x-0 mx-auto max-w-[95%] sm:max-w-6xl px-2 sm:px-4 md:px-12 z-[100] transition-all duration-300 ease-in-out",
                     isOpen ? "h-[calc(100vh-16px)] sm:h-[calc(100%-24px)]" : "h-14 sm:h-20",
                     isScrolled ? "top-2 sm:top-4" : "top-2 sm:top-6"
                 )}
             >
                 <Wrapper className={cn(
-                    "backdrop-blur-2xl rounded-lg lg:rounded-xl border px-3 sm:px-6 md:px-8 py-1.5 sm:py-2 flex items-center justify-between transition-all duration-300 ease-in-out h-full",
+                    "backdrop-blur-2xl rounded-lg lg:rounded-xl border px-2 sm:px-6 md:px-8 py-1.5 sm:py-2 flex items-center justify-between transition-all duration-300 ease-in-out h-full w-full",
                     "border-[rgba(124,124,124,0.2)] hover:border-[rgba(124,124,124,0.4)]",
                     isScrolled ? "shadow-xl shadow-black/30" : "shadow-lg shadow-black/20",
                     isOpen && "flex-col items-start pt-3 sm:pt-4 pb-4 sm:pb-6"
