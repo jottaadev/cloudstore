@@ -43,15 +43,15 @@ const Navbar = () => {
             <header
                 className={cn(
                     "fixed top-2 sm:top-6 inset-x-0 mx-auto max-w-6xl px-2 sm:px-4 md:px-12 z-[100] transition-all duration-300 ease-in-out",
-                    isOpen ? "h-[calc(100vh-16px)] sm:h-[calc(100%-24px)]" : "h-16 sm:h-20",
+                    isOpen ? "h-[calc(100vh-16px)] sm:h-[calc(100%-24px)]" : "h-14 sm:h-20",
                     isScrolled ? "top-2 sm:top-4" : "top-2 sm:top-6"
                 )}
             >
                 <Wrapper className={cn(
-                    "backdrop-blur-2xl rounded-lg lg:rounded-xl border px-3 sm:px-6 md:px-8 py-2 flex items-center justify-between transition-all duration-300 ease-in-out h-full",
+                    "backdrop-blur-2xl rounded-lg lg:rounded-xl border px-3 sm:px-6 md:px-8 py-1.5 sm:py-2 flex items-center justify-between transition-all duration-300 ease-in-out h-full",
                     "border-[rgba(124,124,124,0.2)] hover:border-[rgba(124,124,124,0.4)]",
                     isScrolled ? "shadow-xl shadow-black/30" : "shadow-lg shadow-black/20",
-                    isOpen && "flex-col items-start pt-4 pb-6"
+                    isOpen && "flex-col items-start pt-3 sm:pt-4 pb-4 sm:pb-6"
                 )}>
                     {/* Header superior com logo e controles */}
                     <div className="flex items-center justify-between w-full">
@@ -67,7 +67,7 @@ const Navbar = () => {
                                 alt="ZYEXCLOUD STORE"
                                 width={180}
                                 height={54}
-                                className="h-10 sm:h-12 w-auto"
+                                className="h-8 sm:h-12 w-auto"
                                 priority
                             />
                             </Link>
@@ -96,7 +96,7 @@ const Navbar = () => {
                                 variant="ghost"
                                 onClick={() => setIsOpen((prev) => !prev)}
                                 className={cn(
-                                    "lg:hidden p-2 w-9 h-9 transition-all duration-200 ease-in-out",
+                                    "lg:hidden p-1.5 w-8 h-8 transition-all duration-200 ease-in-out",
                                     "hover:bg-accent/50 rounded-lg",
                                     isOpen && "bg-accent/50"
                                 )}
