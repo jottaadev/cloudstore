@@ -214,23 +214,23 @@ const Pricing = () => {
                 <div className="absolute hidden lg:block top-1/2 left-2/3 -translate-x-1/4 -translate-y-1/2 w-96 h-96 bg-violet-500/15 blur-[10rem] -z-10"></div>
                 <Container>
                     <Tabs defaultValue="plans" className="w-full flex flex-col items-center justify-center">
-                        <TabsList className="grid w-full max-w-md grid-cols-2 bg-muted/50 p-1 rounded-lg">
+                        <TabsList className="grid w-full max-w-md grid-cols-2 p-1 rounded-full bg-gradient-to-r from-blue-500/10 via-blue-400/5 to-violet-500/10 border border-white/10">
                             <TabsTrigger 
                                 value="plans"
-                                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm transition-all duration-200"
+                                className="rounded-full data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
                             >
                                 Planos
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="renewals"
-                                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm transition-all duration-200"
+                                className="rounded-full data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
                             >
                                 Renovações
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="plans">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-14">
-                                {PLANS.map((plan, index) => (
+                                {PLANS.slice(0,3).map((plan, index) => (
                                     <PlanCard
                                         key={index}
                                         index={index}
@@ -242,7 +242,7 @@ const Pricing = () => {
                         </TabsContent>
                         <TabsContent value="renewals">
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-14">
-                                {RENEWALS.map((renewal, index) => (
+                                {RENEWALS.slice(0,3).map((renewal, index) => (
                                     <RenewalCard
                                         key={index}
                                         index={index}

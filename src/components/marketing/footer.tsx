@@ -4,33 +4,33 @@ import Container from "../global/container";
 import Icons from "../global/icons";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
-import { Particles } from "../ui/particles";
+import RetroGrid from "../ui/retro-grid";
+import { ArrowRightIcon } from "lucide-react";
 
 const Footer = () => {
     return (
         <footer className="w-full py-10 relative">
             <Container>
                 <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden footer">
-                    <Particles
-                        className="absolute inset-0 w-full -z-10"
-                        quantity={40}
-                        ease={10}
-                        color="#d4d4d8"
-                        refresh
-                    />
+                    <div className="absolute inset-0 -z-10">
+                        <RetroGrid className="opacity-[0.2]" angle={60} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                        <div className="absolute -top-20 left-1/3 w-[600px] h-[600px] bg-blue-500/15 blur-[140px] rounded-full" />
+                        <div className="absolute -bottom-40 right-1/3 w-[600px] h-[600px] bg-cyan-500/10 blur-[140px] rounded-full" />
+                    </div>
                     <div className="flex flex-col items-start max-w-48">
                         <div className="flex items-center gap-2">
                             <Icons.icon className="w-5 h-5" />
                             <span className="text-xl font-medium">
-                                Luro
+                                DarkCloudStore
                             </span>
                         </div>
                         <p className="text-base max-w mt-4">
-                            Capacite seus negócios com nossas ferramentas de IA.
+                            Jogue e trabalhe na nuvem com performance, estabilidade e zero complicação.
                         </p>
                         <Button className="mt-8">
                             <Link href="/app">
-                                Comece de graça
+                                Comece agora <ArrowRightIcon className="w-4 h-4 ml-2" />
                             </Link>
                         </Button>
                     </div>
@@ -57,7 +57,7 @@ const Footer = () => {
             <Container>
                 <Wrapper className="pt-10 flex items-center justify-between relative">
                     <p className="text-sm text-secondary-foreground">
-                        &copy; {new Date().getFullYear()} Luro. Todos os direitos reservados.
+                        &copy; {new Date().getFullYear()} DarkCloudStore. Todos os direitos reservados.
                     </p>
                     <div className="flex items-center gap-4">
                         <Link href="#" className="p-1">

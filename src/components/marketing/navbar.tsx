@@ -38,19 +38,19 @@ const Navbar = () => {
 
     return (
         <div className="relative w-full h-full">
-            <div className="z-[99] fixed pointer-events-none inset-x-0 h-[104px] bg-[rgba(10,10,10,0.8)] backdrop-blur-sm [mask:linear-gradient(to_bottom,#000_20%,transparent_calc(100%-20%))]"></div>
+            <div className="z-[99] fixed pointer-events-none inset-x-0 h-[128px] bg-[rgba(10,10,10,0.85)] backdrop-blur-md [mask:linear-gradient(to_bottom,#000_25%,transparent_calc(100%-25%))]"></div>
 
             <header
                 className={cn(
-                    "fixed top-4 inset-x-0 mx-auto max-w-6xl px-2 md:px-12 z-[100] transition-all duration-300 ease-in-out",
-                    isOpen ? "h-[calc(100%-24px)]" : "h-16",
-                    isScrolled ? "top-2" : "top-4"
+                    "fixed top-6 inset-x-0 mx-auto max-w-6xl px-4 md:px-12 z-[100] transition-all duration-300 ease-in-out",
+                    isOpen ? "h-[calc(100%-24px)]" : "h-20",
+                    isScrolled ? "top-4" : "top-6"
                 )}
             >
                 <Wrapper className={cn(
-                    "backdrop-blur-lg rounded-xl lg:rounded-2xl border px-4 md:px-6 flex items-center justify-between transition-all duration-300 ease-in-out",
+                    "backdrop-blur-2xl rounded-2xl lg:rounded-3xl border px-6 md:px-8 py-2 flex items-center justify-between transition-all duration-300 ease-in-out",
                     "border-[rgba(124,124,124,0.2)] hover:border-[rgba(124,124,124,0.4)]",
-                    isScrolled ? "shadow-lg shadow-black/20" : "shadow-md shadow-black/10"
+                    isScrolled ? "shadow-xl shadow-black/30" : "shadow-lg shadow-black/20"
                 )}>
                     {/* Logo */}
                     <div className="flex items-center">
@@ -61,9 +61,9 @@ const Navbar = () => {
                             <Image
                                 src="/images/DARK_CLOUD.png"
                                 alt="DARKCLOUD STORE"
-                                width={120}
-                                height={40}
-                                className="h-8 w-auto"
+                                width={160}
+                                height={48}
+                                className="h-10 w-auto"
                                 priority
                             />
                         </Link>
