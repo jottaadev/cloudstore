@@ -1,4 +1,4 @@
-# 🌩️ Dark Cloud Store
+# 🌩️ ZyexCloud Store
 
 Uma plataforma moderna de cloud gaming e computação em nuvem, construída com Next.js 14 e tecnologias de ponta.
 
@@ -99,4 +99,4 @@ Para dúvidas ou sugestões, entre em contato através do GitHub.
 
 ---
 
-Desenvolvido com ❤️ para revolucionar a experiência em cloud computing.
+Desenvolvido com ❤️ pela ZyexCloud para revolucionar a experiência em cloud computing.

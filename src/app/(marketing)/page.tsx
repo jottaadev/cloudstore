@@ -14,7 +14,7 @@ const HomePage = () => {
             </div>
             
             <SpotlightNew 
-                className="absolute inset-0 -top-40 z-10"
+                className="absolute inset-0 -top-40 z-10 hidden sm:block"
                 gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(210, 100%, 85%, .12) 0, hsla(210, 100%, 55%, .04) 50%, hsla(210, 100%, 45%, 0) 80%)"
                 gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .08) 0, hsla(210, 100%, 55%, .03) 80%, transparent 100%)"
                 gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .06) 0, hsla(210, 100%, 45%, .02) 80%, transparent 100%)"
@@ -25,6 +25,11 @@ const HomePage = () => {
                 duration={8}
                 xOffset={120}
             />
+            
+            {/* Mobile simplified spotlight */}
+            <div className="absolute inset-0 -top-20 z-10 sm:hidden">
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[600px] bg-gradient-radial from-blue-600/10 via-blue-600/5 to-transparent rounded-full blur-3xl opacity-50" />
+            </div>
             
             <Wrapper className="py-20 relative z-20">
                 <Container className="relative">

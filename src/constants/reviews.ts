@@ -21,7 +21,7 @@ export const REVIEWS: REVIEW[] = [
     {
         name: "Pedro Costa",
         username: "@pedrostreamer",
-        review: "Perfeito para streaming! Zero lag, qualidade máxima. Meus viewers não acreditam que estou jogando na nuvem. Dark Cloud Store é revolucionário!",
+        review: "Perfeito para streaming! Zero lag, qualidade máxima. Meus viewers não acreditam que estou jogando na nuvem. ZyexCloud é revolucionário!",
         img: "https://randomuser.me/api/portraits/men/3.jpg"
     },
     {

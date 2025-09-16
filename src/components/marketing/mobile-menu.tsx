@@ -109,7 +109,6 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                                 onClick={() => setIsOpen(false)}
                                 className="flex items-center justify-center w-full px-4 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-blue-600/25"
                             >
-                                <span className="mr-2">💬</span>
                                 Entrar no Discord
                             </Link>
                         </motion.div>

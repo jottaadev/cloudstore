@@ -62,14 +62,14 @@ const Navbar = () => {
                                 className="transition-transform duration-200 hover:scale-105"
                                 onClick={() => setIsOpen(false)}
                             >
-                                <Image
-                                    src="/images/DARK_CLOUD.png"
-                                    alt="DARKCLOUD STORE"
-                                    width={140}
-                                    height={42}
-                                    className="h-8 sm:h-10 w-auto"
-                                    priority
-                                />
+                            <Image
+                                src="/images/zyex.png"
+                                alt="ZYEXCLOUD STORE"
+                                width={140}
+                                height={42}
+                                className="h-8 sm:h-10 w-auto"
+                                priority
+                            />
                             </Link>
                         </div>
 

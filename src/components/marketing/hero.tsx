@@ -20,7 +20,7 @@ const Hero = () => {
                         </div>
                     </div>
                     <span className="inline-flex items-center justify-center gap-2 animate-text-gradient animate-background-shine bg-gradient-to-r from-[#60a5fa] via-[#3b82f6] to-[#93c5fd] bg-[200%_auto] bg-clip-text text-sm text-transparent px-3 py-1">
-                        Dark Cloud Store
+                        ZyexCloud Store
                     </span>
                 </div>
             </Container>
@@ -41,7 +41,7 @@ const Hero = () => {
                             <ArrowRightIcon className="w-4 h-4 ml-2" />
                         </Link>
                     </Button>
-                    <Button asChild size="lg" variant="outline" className="w-full sm:w-auto flex bg-blue-600 hover:bg-blue-700 text-white border-blue-600 hover:border-blue-700 shadow-lg shadow-blue-600/25 transition-all duration-200 hover:scale-[1.02] hover:shadow-blue-600/40 min-h-[48px]">
+                    <Button asChild size="lg" variant="outline" className="w-full sm:w-auto flex bg-transparent hover:bg-white/5 text-white border-white/20 hover:border-white/40 backdrop-blur-sm transition-all duration-200 hover:scale-[1.02] min-h-[48px]">
                         <Link href="#">
                             <span>Saiba mais</span>
                             <HelpCircleIcon className="w-4 h-4 ml-2" />

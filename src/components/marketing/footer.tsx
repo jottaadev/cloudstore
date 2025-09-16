@@ -14,7 +14,7 @@ const Footer = () => {
                     <div className="flex flex-col items-start max-w-xs">
                         <div className="flex items-center gap-2">
                             <span className="text-xl font-medium text-white">
-                                Dark Cloud
+                                ZyexCloud
                             </span>
                         </div>
                         <p className="text-base text-gray-300 mt-4">
@@ -50,7 +50,7 @@ const Footer = () => {
             <Container>
                 <Wrapper className="pt-10 flex flex-col sm:flex-row items-center justify-between relative gap-4">
                     <p className="text-sm text-gray-400 text-center sm:text-left">
-                        &copy; {new Date().getFullYear()} DarkCloudStore. Todos os direitos reservados.
+                        &copy; {new Date().getFullYear()} ZyexCloudStore. Todos os direitos reservados.
                     </p>
                     <div className="flex items-center gap-4">
                         <Link href="#" className="p-1">
