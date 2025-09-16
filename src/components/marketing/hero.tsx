@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, HelpCircleIcon } from "lucide-react";
 import Link from "next/link";
 import { BlurText } from "../ui/blur-text";
 import { Button } from "../ui/button";
@@ -44,7 +44,7 @@ const Hero = () => {
                     <Button asChild size="lg" variant="outline" className="hidden md:flex">
                         <Link href="#">
                             <span>Saiba mais</span>
-                            <ArrowRightIcon className="w-4 h-4 ml-2" />
+                            <HelpCircleIcon className="w-4 h-4 ml-2" />
                         </Link>
                     </Button>
                 </div>

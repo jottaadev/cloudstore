@@ -4,20 +4,13 @@ import Container from "../global/container";
 import Icons from "../global/icons";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
-import RetroGrid from "../ui/retro-grid";
 import { ArrowRightIcon } from "lucide-react";
 
 const Footer = () => {
     return (
         <footer className="w-full py-10 relative">
             <Container>
-                <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden footer">
-                    <div className="absolute inset-0 -z-10">
-                        <RetroGrid className="opacity-[0.2]" angle={60} />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                        <div className="absolute -top-20 left-1/3 w-[600px] h-[600px] bg-blue-500/15 blur-[140px] rounded-full" />
-                        <div className="absolute -bottom-40 right-1/3 w-[600px] h-[600px] bg-cyan-500/10 blur-[140px] rounded-full" />
-                    </div>
+                <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden">
                     <div className="flex flex-col items-start max-w-48">
                         <div className="flex items-center gap-2">
                             <Icons.icon className="w-5 h-5" />

@@ -214,16 +214,16 @@ const Pricing = () => {
                 <div className="absolute hidden lg:block top-1/2 left-2/3 -translate-x-1/4 -translate-y-1/2 w-96 h-96 bg-violet-500/15 blur-[10rem] -z-10"></div>
                 <Container>
                     <Tabs defaultValue="plans" className="w-full flex flex-col items-center justify-center">
-                        <TabsList className="grid w-full max-w-md grid-cols-2 p-1 rounded-full bg-gradient-to-r from-blue-500/10 via-blue-400/5 to-violet-500/10 border border-white/10">
+                        <TabsList className="grid w-full max-w-md grid-cols-2 p-1 rounded-2xl bg-black/30 backdrop-blur border border-white/10 shadow-inner">
                             <TabsTrigger 
                                 value="plans"
-                                className="rounded-full data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+                                className="rounded-xl data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm transition-all duration-200"
                             >
                                 Planos
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="renewals"
-                                className="rounded-full data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+                                className="rounded-xl data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm transition-all duration-200"
                             >
                                 Renovações
                             </TabsTrigger>

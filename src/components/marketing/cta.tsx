@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "../global/container";
 import { Button } from "../ui/button";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, HelpCircleIcon } from "lucide-react";
 
 const CTA = () => {
     return (
@@ -24,7 +24,7 @@ const CTA = () => {
                             </Button>
                             <Button asChild size="lg" variant="secondary" className="w-full md:w-max">
                                 <Link href="">
-                                    Saiba mais <ArrowRightIcon className="w-4 h-4 ml-2" />
+                                    Saiba mais <HelpCircleIcon className="w-4 h-4 ml-2" />
                                 </Link>
                             </Button>
                         </div>
