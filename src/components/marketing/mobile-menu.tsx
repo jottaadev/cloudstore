@@ -74,11 +74,11 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                     animate="visible"
                     exit="exit"
                     variants={containerVariants}
-                    className="absolute top-12 inset-x-0 size-full p-4 z-20 bg-inherit flex flex-1"
+                    className="w-full mt-6 flex flex-col flex-1 lg:hidden"
                 >
-                    <div className="size-full flex flex-col justify-start">
+                    <div className="w-full flex flex-col justify-start">
                         {/* Main Menu Items */}
-                        <motion.ul variants={containerVariants} className="flex flex-col items-start flex-1 w-full space-y-2">
+                        <motion.ul variants={containerVariants} className="flex flex-col items-start w-full space-y-1">
                             {menuItems.map((item, index) => (
                                 <motion.li
                                     key={item.title}
@@ -90,14 +90,29 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                                         href={item.href} 
                                         target={item.href.startsWith('http') ? '_blank' : undefined}
                                         rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                        className="flex items-center w-full px-4 py-3 text-lg hover:text-muted-foreground font-normal transition-all duration-200 rounded-lg cursor-pointer text-foreground hover:bg-muted/20 active:scale-95"
+                                        className="flex items-center w-full px-4 py-4 text-base font-medium transition-all duration-200 rounded-xl cursor-pointer text-white/80 hover:text-white hover:bg-white/10 active:scale-[0.98] border border-transparent hover:border-white/20"
                                     >
-                                        {item.icon}
-                                        <span className="ml-3">{item.title}</span>
+                                        <span className="text-blue-400 mr-3">{item.icon}</span>
+                                        <span>{item.title}</span>
                                     </Link>
                                 </motion.li>
                             ))}
                         </motion.ul>
+                        
+                        {/* Mobile Login Button */}
+                        <motion.div 
+                            variants={itemVariants}
+                            className="mt-6 w-full"
+                        >
+                            <Link 
+                                href="#" 
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center justify-center w-full px-4 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all duration-200 hover:scale-[1.02] shadow-lg shadow-blue-600/25"
+                            >
+                                <span className="mr-2">💬</span>
+                                Entrar no Discord
+                            </Link>
+                        </motion.div>
                     </div>
                 </motion.div>
             )}

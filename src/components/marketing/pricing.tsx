@@ -77,19 +77,19 @@ const PlanCard = ({
                     <div className="relative flex flex-col flex-1 w-full break-words text-left gap-4">
                         <div className="flex items-end gap-2 mb-4">
                             <div className="flex items-end gap-1">
-                                <span className="text-3xl md:text-4xl font-bold">
+                                <span className="text-2xl sm:text-3xl md:text-4xl font-bold">
                                     R${displayedPrice === 0 ? 0 : <NumberTicker value={displayedPrice} />}
                                 </span>
-                                <span className="text-lg text-muted-foreground font-medium">
+                                <span className="text-sm sm:text-lg text-muted-foreground font-medium">
                                     / hora
                                 </span>
                             </div>
                         </div>
                         <ul className="flex flex-col gap-2">
                             {features.map((feature, index) => (
-                                <li key={index} className="flex items-center gap-2">
-                                    <CheckIcon aria-hidden="true" className="w-5 h-5 text-primary" />
-                                    <p className="text-sm md:text-base text-muted-foreground">
+                                <li key={index} className="flex items-start gap-2">
+                                    <CheckIcon aria-hidden="true" className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0 mt-0.5" />
+                                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
                                         {feature}
                                     </p>
                                 </li>
@@ -170,9 +170,9 @@ const RenewalCard = ({
                         </div>
                         <ul className="flex flex-col gap-2">
                             {features.map((feature, index) => (
-                                <li key={index} className="flex items-center gap-2">
-                                    <CheckIcon aria-hidden="true" className="w-5 h-5 text-primary" />
-                                    <p className="text-sm md:text-base text-muted-foreground">
+                                <li key={index} className="flex items-start gap-2">
+                                    <CheckIcon aria-hidden="true" className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0 mt-0.5" />
+                                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
                                         {feature}
                                     </p>
                                 </li>
@@ -197,14 +197,14 @@ const RenewalCard = ({
 
 const Pricing = () => {
     return (
-        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24  w-full relative">
+        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative px-4 sm:px-6 lg:px-8">
             <Container>
-                <div className="flex flex-col items-center text-center max-w-xl mx-auto">
+                <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
                     <SectionBadge title="Escolha o seu plano" />
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6 px-4">
                         Preços simples e transparentes
                     </h2>
-                    <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
+                    <p className="text-sm sm:text-base md:text-lg text-center text-accent-foreground/80 mt-6 max-w-2xl">
                         Escolha o plano que atenda às suas necessidades. Sem taxas ocultas, sem surpresas.
                     </p>
                 </div>
@@ -214,22 +214,23 @@ const Pricing = () => {
                 <div className="absolute hidden lg:block top-1/2 left-2/3 -translate-x-1/4 -translate-y-1/2 w-96 h-96 bg-violet-500/15 blur-[10rem] -z-10"></div>
                 <Container>
                     <Tabs defaultValue="plans" className="w-full flex flex-col items-center justify-center">
-                        <TabsList className="grid w-full max-w-md grid-cols-2 p-1 rounded-2xl bg-black/30 backdrop-blur border border-white/10 shadow-inner">
+                        <TabsList className="grid w-full max-w-lg grid-cols-2 p-1.5 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/50 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/5 to-blue-600/10 rounded-2xl" />
                             <TabsTrigger 
                                 value="plans"
-                                className="rounded-xl text-foreground/80 hover:text-white data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+                                className="relative rounded-xl text-white/70 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-600/50 transition-all duration-300 ease-out data-[state=active]:scale-[1.02] font-medium py-3 px-6"
                             >
-                                Planos
+                                <span className="relative z-10">💎 Planos</span>
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="renewals"
-                                className="rounded-xl text-foreground/80 hover:text-white data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
+                                className="relative rounded-xl text-white/70 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-600/50 transition-all duration-300 ease-out data-[state=active]:scale-[1.02] font-medium py-3 px-6"
                             >
-                                Renovações
+                                <span className="relative z-10">🔄 Renovações</span>
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="plans">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-14">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full mt-10 sm:mt-14 px-4 sm:px-0">
                                 {PLANS.slice(0,3).map((plan, index) => (
                                     <PlanCard
                                         key={index}
@@ -241,7 +242,7 @@ const Pricing = () => {
                             </div>
                         </TabsContent>
                         <TabsContent value="renewals">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-14">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full mt-10 sm:mt-14 px-4 sm:px-0">
                                 {RENEWALS.slice(0,3).map((renewal, index) => (
                                     <RenewalCard
                                         key={index}
