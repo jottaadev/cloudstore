@@ -13,9 +13,8 @@ const Footer = () => {
                 <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden">
                     <div className="flex flex-col items-start max-w-48">
                         <div className="flex items-center gap-2">
-                            <Icons.icon className="w-5 h-5" />
                             <span className="text-xl font-medium">
-                                DarkCloudStore
+                                Dark Cloud
                             </span>
                         </div>
                         <p className="text-base max-w mt-4">

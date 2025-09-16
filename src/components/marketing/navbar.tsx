@@ -48,7 +48,7 @@ const Navbar = () => {
                 )}
             >
                 <Wrapper className={cn(
-                    "backdrop-blur-2xl rounded-xl lg:rounded-2xl border px-6 md:px-8 py-2 flex items-center justify-between transition-all duration-300 ease-in-out",
+                    "backdrop-blur-2xl rounded-lg lg:rounded-xl border px-6 md:px-8 py-2 flex items-center justify-between transition-all duration-300 ease-in-out",
                     "border-[rgba(124,124,124,0.2)] hover:border-[rgba(124,124,124,0.4)]",
                     isScrolled ? "shadow-xl shadow-black/30" : "shadow-lg shadow-black/20"
                 )}>
@@ -78,7 +78,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-3">
                         <Link href="#" className='hidden lg:flex'>
                             <Button className={cn(
-                                'bg-white text-black hover:bg-white/90',
+                                'bg-blue-600 text-white hover:bg-blue-700',
                                 'flex items-center gap-2 transition-all duration-200 ease-in-out',
                                 'hover:scale-[1.02] shadow-sm',
                                 'px-6 py-2 rounded-xl font-medium'
