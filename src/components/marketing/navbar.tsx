@@ -65,9 +65,9 @@ const Navbar = () => {
                             <Image
                                 src="/images/zyex.png"
                                 alt="ZYEXCLOUD STORE"
-                                width={140}
-                                height={42}
-                                className="h-8 sm:h-10 w-auto"
+                                width={180}
+                                height={54}
+                                className="h-10 sm:h-12 w-auto"
                                 priority
                             />
                             </Link>
@@ -81,12 +81,12 @@ const Navbar = () => {
                         {/* Botões - Desktop e Mobile */}
                         <div className="flex items-center gap-2 sm:gap-3">
                             <Link href="#" className='hidden lg:flex'>
-                                <Button className={cn(
-                                    'bg-blue-600 text-white hover:bg-blue-700',
-                                    'flex items-center gap-2 transition-all duration-200 ease-in-out',
-                                    'hover:scale-[1.02] shadow-sm',
-                                    'px-4 sm:px-6 py-2 rounded-xl font-medium text-sm'
-                                )}>
+                            <Button className={cn(
+                                'bg-blue-600 text-white hover:bg-blue-700',
+                                'flex items-center gap-2 transition-all duration-200 ease-in-out',
+                                'hover:scale-[1.02] shadow-sm',
+                                'px-4 sm:px-6 py-2 rounded-lg font-medium text-sm'
+                            )}>
                                     <Icons.discord className="w-4 h-4" />
                                     Entrar
                                 </Button>

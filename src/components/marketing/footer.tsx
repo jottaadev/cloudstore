@@ -5,6 +5,7 @@ import Icons from "../global/icons";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
 import { ArrowRightIcon } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
     return (
@@ -12,7 +13,14 @@ const Footer = () => {
             <Container>
                 <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden">
                     <div className="flex flex-col items-start max-w-xs">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-3">
+                            <Image
+                                src="/images/zyex.png"
+                                alt="ZyexCloud Logo"
+                                width={32}
+                                height={32}
+                                className="h-8 w-auto"
+                            />
                             <span className="text-xl font-medium text-white">
                                 ZyexCloud
                             </span>

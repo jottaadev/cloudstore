@@ -9,6 +9,12 @@ import Container from "../global/container";
 const Hero = () => {
     return (
         <div className="relative w-full min-h-[100svh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            {/* Spotlight lateral esquerdo */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] h-[600px] sm:h-[800px] bg-gradient-radial from-blue-600/15 via-blue-600/8 to-transparent rounded-full blur-3xl opacity-60 -z-10" />
+            
+            {/* Spotlight lateral direito */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] h-[600px] sm:h-[800px] bg-gradient-radial from-purple-600/15 via-purple-600/8 to-transparent rounded-full blur-3xl opacity-60 -z-10" />
+            
             <div className="flex flex-col items-center text-center w-full max-w-5xl my-8 sm:my-12 mx-auto z-40 relative">
                 <Container delay={0.0}>
                 <div className="pl-2 pr-1 py-1 rounded-full border border-foreground/10 hover:border-foreground/15 backdrop-blur-lg cursor-pointer flex items-center gap-2.5 select-none w-max mx-auto">
@@ -20,7 +26,7 @@ const Hero = () => {
                         </div>
                     </div>
                     <span className="inline-flex items-center justify-center gap-2 animate-text-gradient animate-background-shine bg-gradient-to-r from-[#60a5fa] via-[#3b82f6] to-[#93c5fd] bg-[200%_auto] bg-clip-text text-sm text-transparent px-3 py-1">
-                        ZyexCloud Store
+                        ZyexCloud
                     </span>
                 </div>
             </Container>
