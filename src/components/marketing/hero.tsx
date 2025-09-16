@@ -35,7 +35,7 @@ const Hero = () => {
             </Container>
             <Container delay={0.2}>
                 <div className="flex items-center justify-center md:gap-x-6 mt-8">
-                    <Button asChild size="lg" variant="outline" className="flex">
+                    <Button asChild size="lg" className="flex bg-blue-600/20 hover:bg-blue-600/30 text-white border border-blue-500/30">
                         <Link href="/app">
                             <span>Começar agora</span>
                             <ArrowRightIcon className="w-4 h-4 ml-2" />

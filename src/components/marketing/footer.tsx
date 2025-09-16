@@ -8,7 +8,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className="w-full py-10 relative">
+        <footer className="w-full py-10 relative bg-background">
             <Container>
                 <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden">
                     <div className="flex flex-col items-start max-w-48">

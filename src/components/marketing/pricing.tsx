@@ -100,7 +100,7 @@ const PlanCard = ({
                         <Button
                             asChild
                             variant="default"
-                            className="w-full hover:scale-100 hover:translate-y-0 shadow-none"
+                            className="w-full hover:scale-100 hover:translate-y-0 shadow-none bg-blue-600 hover:bg-blue-700 text-white"
                         >
                             <Link href={""}>
                                 {buttonText}
@@ -217,13 +217,13 @@ const Pricing = () => {
                         <TabsList className="grid w-full max-w-md grid-cols-2 p-1 rounded-2xl bg-black/30 backdrop-blur border border-white/10 shadow-inner">
                             <TabsTrigger 
                                 value="plans"
-                                className="rounded-xl data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm transition-all duration-200"
+                                className="rounded-xl text-foreground/80 hover:text-white data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
                             >
                                 Planos
                             </TabsTrigger>
                             <TabsTrigger 
                                 value="renewals"
-                                className="rounded-xl data-[state=active]:bg-white data-[state=active]:text-black data-[state=active]:shadow-sm transition-all duration-200"
+                                className="rounded-xl text-foreground/80 hover:text-white data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-sm transition-all duration-200"
                             >
                                 Renovações
                             </TabsTrigger>
